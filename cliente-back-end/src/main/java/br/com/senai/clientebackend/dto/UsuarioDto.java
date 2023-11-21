@@ -6,6 +6,8 @@ public class UsuarioDto {
     private String username;
 
     private String password;
+    
+    private String email;
 
     private String tipoUsuario;
 
@@ -13,11 +15,12 @@ public class UsuarioDto {
 
     }
 
-    public UsuarioDto(long id, String username, String password, String tipoUsuario) {
+    public UsuarioDto(long id, String username, String password, String tipoUsuario, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.tipoUsuario = tipoUsuario;
+        this.email = email;
     }
 
     public UsuarioDto(String username, String password, String tipoUsuario) {
@@ -57,4 +60,14 @@ public class UsuarioDto {
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+    
+    
 }

@@ -32,15 +32,17 @@ public class Cliente {
         this.telefoneCliente = clienteDTO.getTelefoneCliente();
         this.id = clienteDTO.getId();
         this.nomeCliente = clienteDTO.getNomeCliente();
+        this.idUsuario = clienteDTO.getIdUsuario();
     }
 
-    public Cliente(Integer id, String nomeCliente, String cpfCliente, String telefoneCliente, String enderecoCliente, String emailCliente) {
+    public Cliente(Integer id, String nomeCliente, String cpfCliente, String telefoneCliente, String enderecoCliente, String emailCliente, long idUsuario) {
         this.id = id;
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
         this.telefoneCliente = telefoneCliente;
         this.enderecoCliente = enderecoCliente;
         this.emailCliente = emailCliente;
+        this.idUsuario = idUsuario;
     }
 
     public Cliente(String nomeCliente, String cpfCliente, String telefoneCliente, String enderecoCliente, String emailCliente) {
