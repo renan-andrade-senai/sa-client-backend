@@ -14,15 +14,5 @@ public class ClienteBackEndApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClienteBackEndApplication.class, args);
 	}
-	@Bean
-	public WebMvcConfigurer webMvcConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
-
-			}
-		};
-	}
 
 }
