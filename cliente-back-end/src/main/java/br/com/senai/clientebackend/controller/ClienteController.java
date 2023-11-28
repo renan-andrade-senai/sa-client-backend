@@ -33,6 +33,12 @@ public class ClienteController {
         List<Cliente> clientes = clienteService.listarClientes();
         return ResponseEntity.ok(clientes.stream().map(ClienteDTO::new).toList());
     }
+    
+    @GetMapping("/cliente/idusuario/{idUsuario}")
+    public ResponseEntity<ClienteDTO> getClienteByIdUsuario(@PathVariable long idUsuario) {
+    	Cliente cliente = clienteService.getClienteByIdUsuario(idUsuario);
+        return ResponseEntity.ok(new ClienteDTO(cliente));
+    }
 
     @PutMapping("/cliente")
     public ResponseEntity<ClienteDTO> alterarCliente(@RequestBody ClienteDTO clienteDTO) {
