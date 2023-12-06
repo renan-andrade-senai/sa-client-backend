@@ -30,6 +30,7 @@ public class ClienteDTO {
         this.enderecoCliente = cliente.getEnderecoCliente();
         this.cpfCliente = cliente.getCpfCliente();
         this.nomeCliente = cliente.getNomeCliente();
+        this.idUsuario = cliente.getIdUsuario();
     }
 
     public ClienteDTO() {

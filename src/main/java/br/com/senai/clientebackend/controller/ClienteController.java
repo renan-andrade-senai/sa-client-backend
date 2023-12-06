@@ -1,20 +1,29 @@
 package br.com.senai.clientebackend.controller;
 
-import br.com.senai.clientebackend.dto.ClienteDTO;
-import br.com.senai.clientebackend.model.Cliente;
-import br.com.senai.clientebackend.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.IOException;
-import java.io.Serial;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.rowset.serial.SerialBlob;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import br.com.senai.clientebackend.client.SecurityClient;
+import br.com.senai.clientebackend.dto.ClienteDTO;
+import br.com.senai.clientebackend.model.Cliente;
+import br.com.senai.clientebackend.service.ClienteService;
 
 @RestController
 
@@ -22,12 +31,12 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
-//    @Autowired
-//    private SecurityClient securityClient;
+    @Autowired
+    private SecurityClient securityClient;
     @PostMapping("/cliente")
     public ResponseEntity<ClienteDTO> cadastrarCliente(@RequestBody ClienteDTO clienteDTO) {
-//        long idUsuario = securityClient.criarUsuario(clienteDTO.getUsuarioDto());
-//        clienteDTO.setIdUsuario(idUsuario);
+        long idUsuario = securityClient.criarUsuario(clienteDTO.getUsuarioDto());
+        clienteDTO.setIdUsuario(idUsuario);
         Cliente cliente = clienteService.salvarCliente(clienteDTO, null);
         return ResponseEntity.ok(new ClienteDTO(cliente));
     }
